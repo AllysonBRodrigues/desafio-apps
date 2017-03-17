@@ -5,4 +5,5 @@ package allyson.com.br.infogloboapp.InterfacesComuns;
  */
 
 public interface OnItemClickListener {
+    void OnClick(int pos, Object object);
 }
