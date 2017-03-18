@@ -1,4 +1,4 @@
-package allyson.com.br.infogloboapp.view.fragment;
+package allyson.com.br.infogloboapp.apresentacao.Reportagem;
 
 
 import android.os.Bundle;
@@ -17,18 +17,13 @@ import android.widget.ScrollView;
 
 import com.bluejamesbond.text.DocumentView;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import org.joda.time.DateTime;
 
-import java.lang.reflect.Type;
-import java.security.Principal;
-import java.util.ArrayList;
-
 import allyson.com.br.infogloboapp.R;
 import allyson.com.br.infogloboapp.model.Conteudo;
-import allyson.com.br.infogloboapp.view.activity.PrincipalActivity;
+import allyson.com.br.infogloboapp.apresentacao.main.PrincipalActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -108,7 +103,7 @@ public class ReportagemFragment extends Fragment {
         tv_subtitulo.setText(conteudo.getSubTitulo());
         PrincipalActivity principal = (PrincipalActivity) getActivity();
         principal.mudarTitulo(conteudo.getSecao().getNome());
-        principal.navegacaoIcone("reportagem");
+        principal.configurarNavegacao("reportagem");
         setHasOptionsMenu(true);
 
 

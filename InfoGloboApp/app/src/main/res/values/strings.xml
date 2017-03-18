@@ -4,4 +4,26 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="topo">Topo</string>
+    <string name="navigation_drawer_open">Abrir navigation drawer</string>
+    <string name="navigation_drawer_close">Fechar navigation drawer</string>
+    <string name="editorias">Editorias</string>
+
+    <string-array name="drawer_list">
+        <item>RIO</item>
+        <item>BRASIL</item>
+        <item>MUNDO</item>
+        <item>ECONOMIA</item>
+        <item>SOCIEDADE</item>
+        <item>TECNOLOGIA</item>
+        <item>CIÊNCIA</item>
+        <item>SAÚDE</item>
+        <item>ELA</item>
+        <item>CULTURA</item>
+        <item>TV</item>
+        <item>RIO SHOW</item>
+        <item>ESPORTES</item>
+        <item>FOTOGALERIA</item>
+        <item>VIDEO</item>
+        <item>HORÓSCOPO</item>
+    </string-array>
 </resources>

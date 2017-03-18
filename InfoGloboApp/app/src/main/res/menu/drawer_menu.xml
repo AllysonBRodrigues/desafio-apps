@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/nav_inbox"
+            android:title="1"/>
+        <item
+            android:id="@+id/nav_starred"
+            android:title="2"/>
+        <!-- more items -->
+</menu>

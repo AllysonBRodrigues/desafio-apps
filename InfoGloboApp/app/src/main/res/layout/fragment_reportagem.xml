@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="allyson.com.br.infogloboapp.view.fragment.ReportagemFragment"
+    tools:context="allyson.com.br.infogloboapp.apresentacao.Reportagem.ReportagemFragment"
     android:background="#ffffff"
     android:fillViewport="true"
     android:orientation="vertical"

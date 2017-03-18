@@ -1,4 +1,4 @@
-package allyson.com.br.infogloboapp.view.adapter;
+package allyson.com.br.infogloboapp.apresentacao.conteudo;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
@@ -21,12 +21,12 @@ import allyson.com.br.infogloboapp.model.Conteudo;
  * Created by Allyson Rodrigues 15/03/2017.
  */
 
-public class EditorialAdapter extends RecyclerView.Adapter<EditorialAdapter.ViewHolder> {
+public class ConteudoAdapter extends RecyclerView.Adapter<ConteudoAdapter.ViewHolder> {
 
     private Context context;
     private List<Conteudo> conteudos;
     private OnItemClickListener onItemClickListener;
-    public EditorialAdapter(Context context, List<Conteudo> conteudos, OnItemClickListener onItemClickListener){
+    public ConteudoAdapter(Context context, List<Conteudo> conteudos, OnItemClickListener onItemClickListener){
         this.context = context;
         this.conteudos = conteudos;
         this.onItemClickListener = onItemClickListener;

@@ -9,7 +9,7 @@ import java.util.List;
  * Created by allys on 14/03/2017.
  */
 
-public class RetornoRetrofit {
+public class ConteudoResponse {
     @SerializedName("conteudos")
     @Expose
     private List<Conteudo> conteudos = null;
