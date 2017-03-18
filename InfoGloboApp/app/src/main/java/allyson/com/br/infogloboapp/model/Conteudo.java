@@ -3,6 +3,7 @@ package allyson.com.br.infogloboapp.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,13 +33,13 @@ public class Conteudo {
     private List<Object> videos = null;
     @SerializedName("atualizadoEm")
     @Expose
-    private String atualizadoEm;
+    private Date atualizadoEm;
     @SerializedName("id")
     @Expose
     private Integer id;
     @SerializedName("publicadoEm")
     @Expose
-    private String publicadoEm;
+    private Date publicadoEm;
     @SerializedName("secao")
     @Expose
     private Secao secao;
@@ -99,11 +100,11 @@ public class Conteudo {
         this.videos = videos;
     }
 
-    public String getAtualizadoEm() {
+    public Date getAtualizadoEm() {
         return atualizadoEm;
     }
 
-    public void setAtualizadoEm(String atualizadoEm) {
+    public void setAtualizadoEm(Date atualizadoEm) {
         this.atualizadoEm = atualizadoEm;
     }
 
@@ -115,11 +116,11 @@ public class Conteudo {
         this.id = id;
     }
 
-    public String getPublicadoEm() {
+    public Date getPublicadoEm() {
         return publicadoEm;
     }
 
-    public void setPublicadoEm(String publicadoEm) {
+    public void setPublicadoEm(Date publicadoEm) {
         this.publicadoEm = publicadoEm;
     }
 

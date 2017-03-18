@@ -2,6 +2,11 @@
 <resources>
     <color name="colorPrimary">#2196F3</color>
     <color name="colorPrimaryDark">#1976D2</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#1976D2</color>
     <color name="preto">#000000</color>
+    <color name="branco">#FFFFFF</color>
+    <color name="editorial">#4A90E2</color>
+    <color name="titulo">#1f324a</color>
+    <color name="subtitulo">#6B6B6B</color>
+    <color name="materia">#222222</color>
 </resources>

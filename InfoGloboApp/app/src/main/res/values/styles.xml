@@ -15,4 +15,146 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextoBrancoExtraGrande">
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextoBrancoGrande">
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextoBranco">
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="TextoBrancoPequeno">
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextoBrancoExtraPequeno">
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+    <style name="TextoEditorialExtraGrande">
+        <item name="android:textColor">@color/editorial</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextoEditorialGrande">
+        <item name="android:textColor">@color/editorial</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextoEditorial">
+        <item name="android:textColor">@color/editorial</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextoEditorialPequeno">
+        <item name="android:textColor">@color/editorial</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextoEditorialExtraPequeno">
+        <item name="android:textColor">@color/editorial</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextoTituloExtraExtraGrande">
+        <item name="android:textColor">@color/titulo</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextoTituloExtraGrande">
+        <item name="android:textColor">@color/titulo</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextoTituloGrande">
+        <item name="android:textColor">@color/titulo</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <style name="TextoTitulo">
+        <item name="android:textColor">@color/titulo</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextoTituloPequeno">
+        <item name="android:textColor">@color/titulo</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextoTituloExtraPequeno">
+        <item name="android:textColor">@color/titulo</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+    <style name="TextoCinzaExtraGrande">
+        <item name="android:textColor">@color/subtitulo</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextoCinzaGrande">
+        <item name="android:textColor">@color/subtitulo</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <style name="TextoCinza">
+        <item name="android:textColor">@color/subtitulo</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextoCinzaPequeno">
+        <item name="android:textColor">@color/subtitulo</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextoCinzaExtraPequeno">
+        <item name="android:textColor">@color/subtitulo</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+
+    <style name="TextoAzulExtraGrande">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextoAzulGrande">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <style name="TextoAzul">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextoAzulPequeno">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextoAzulExtraPequeno">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+
+
+
 </resources>

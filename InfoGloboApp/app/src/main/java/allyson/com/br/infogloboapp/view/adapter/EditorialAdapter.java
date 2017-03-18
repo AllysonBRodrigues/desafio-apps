@@ -51,6 +51,7 @@ public class EditorialAdapter extends RecyclerView.Adapter<EditorialAdapter.View
                     .into(holder.iv_editorial);
         }catch (Exception ex){
             Log.e("ERRO","Imagem não disponível");
+            holder.iv_editorial.setVisibility(View.GONE);
         }
     }
     @Override
