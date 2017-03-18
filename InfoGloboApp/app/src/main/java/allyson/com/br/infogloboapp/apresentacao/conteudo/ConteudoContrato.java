@@ -13,7 +13,6 @@ import allyson.com.br.infogloboapp.model.Conteudo;
 public interface ConteudoContrato {
     interface Apresentacao {
         void bind(View view);
-
         void carregarConteudo();
     }
 

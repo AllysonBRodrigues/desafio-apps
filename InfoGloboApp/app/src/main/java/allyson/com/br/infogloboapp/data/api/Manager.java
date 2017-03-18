@@ -2,7 +2,7 @@ package allyson.com.br.infogloboapp.data.api;
 
 import java.util.List;
 
-import allyson.com.br.infogloboapp.Url;
+import allyson.com.br.infogloboapp.model.Url;
 import allyson.com.br.infogloboapp.data.service.Service;
 import allyson.com.br.infogloboapp.data.service.IConteudos;
 import allyson.com.br.infogloboapp.model.ConteudoResponse;

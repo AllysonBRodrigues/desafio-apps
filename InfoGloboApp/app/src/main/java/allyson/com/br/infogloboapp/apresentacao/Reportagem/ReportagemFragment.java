@@ -14,14 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-
 import com.bluejamesbond.text.DocumentView;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import org.joda.time.DateTime;
 
 import allyson.com.br.infogloboapp.R;
+
 import allyson.com.br.infogloboapp.model.Conteudo;
 import allyson.com.br.infogloboapp.apresentacao.main.PrincipalActivity;
 import butterknife.BindView;
@@ -30,7 +29,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ReportagemFragment extends Fragment {
+public class ReportagemFragment extends Fragment implements ReportagemContrato.View{
 
     @BindView(R.id.tv_titulo)
     AppCompatTextView tv_titulo;
@@ -50,7 +49,9 @@ public class ReportagemFragment extends Fragment {
     LinearLayout ll_autores;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
-    private Conteudo conteudo;
+
+    private ReportagemContrato.Apresentacao apresentacao;
+
     public ReportagemFragment() {
         // Required empty public constructor
     }
@@ -64,9 +65,10 @@ public class ReportagemFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_reportagem, container, false);
         ButterKnife.bind(this, view);
 
-
-        atualizarTela();
-
+        apresentacao = new ReportagemApresentacao();
+        apresentacao.bind(this);
+        Bundle bundle = getArguments();
+        apresentacao.carregarConteudo(bundle);
 
         return view;
     }
@@ -95,10 +97,8 @@ public class ReportagemFragment extends Fragment {
         return dia + "/" + mes + "/" + data.year().getAsString() + " " + hora + ":" + minuto;
     }
 
-    public void atualizarTela(){
-        Bundle bundle = getArguments();
-        Gson gson = new Gson();
-        conteudo = gson.fromJson(bundle.getString("reportagem"), Conteudo.class);
+    @Override
+    public void atualizarView(Conteudo conteudo) {
         tv_titulo.setText(conteudo.getTitulo());
         tv_subtitulo.setText(conteudo.getSubTitulo());
         PrincipalActivity principal = (PrincipalActivity) getActivity();
@@ -148,4 +148,8 @@ public class ReportagemFragment extends Fragment {
         tv_reportagem.setText(conteudo.getTexto());
     }
 
+    @Override
+    public void erro() {
+
+    }
 }
