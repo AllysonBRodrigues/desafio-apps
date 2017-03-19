@@ -53,14 +53,15 @@ Desafio passado pela INFOGLOBO para criação de um aplicativo consumindo a API 
 
 ## Telas
 
-- Tela principal onde é exibida a reportagem de capa, uma lista com outras reportagens e  
-o menu lateral contendo a lista de editoriais
+- Tela principal onde é exibida a reportagem de capa, uma lista com outras reportagens e o menu lateral contendo a lista de editoriais
+
 
 [![CAPA](https://github.com/AllysonBRodrigues/desafio-apps/blob/master/screenshots/capa.jpg)](https://github.com/AllysonBRodrigues/desafio-apps/blob/master/screenshots/capa.jpg)
 
 - Menu onde se tem acesso aos editoriais do 'O GLOBO'
 
 [![MENU](https://github.com/AllysonBRodrigues/desafio-apps/blob/master/screenshots/menu.jpg)](https://github.com/AllysonBRodrigues/desafio-apps/blob/master/screenshots/menu.jpg)
+
 
 - Reportagem selecionada pelo usuário com a possibilidade de retornar a reportagem ao topo clicando no menu na lateral superior direita da tela
 
