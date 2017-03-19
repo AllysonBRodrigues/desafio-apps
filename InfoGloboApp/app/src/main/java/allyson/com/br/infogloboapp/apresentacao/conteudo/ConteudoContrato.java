@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import java.util.List;
 
+import allyson.com.br.infogloboapp.data.api.Repository;
 import allyson.com.br.infogloboapp.model.Conteudo;
 
 /**
@@ -12,13 +13,16 @@ import allyson.com.br.infogloboapp.model.Conteudo;
 
 public interface ConteudoContrato {
     interface Apresentacao {
-        void bind(View view);
+        void bind(View view, Repository repository);
+
         void carregarConteudo();
     }
 
     interface View {
         void atualizarView(List<Conteudo> conteudos);
+
         void erro();
+
         void checkInstanceState(Bundle instanceState);
     }
 }

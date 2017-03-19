@@ -1,4 +1,4 @@
-package allyson.com.br.infogloboapp.model;
+package allyson.com.br.infogloboapp.util;
 
 /**
  * Created by allys on 18/03/2017.

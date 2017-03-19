@@ -68,7 +68,7 @@ public class ReportagemFragment extends Fragment implements ReportagemContrato.V
         apresentacao = new ReportagemApresentacao();
         apresentacao.bind(this);
         Bundle bundle = getArguments();
-        apresentacao.carregarConteudo(bundle);
+        apresentacao.carregarConteudo(bundle.getString("reportagem"));
 
         return view;
     }
@@ -148,8 +148,4 @@ public class ReportagemFragment extends Fragment implements ReportagemContrato.V
         tv_reportagem.setText(conteudo.getTexto());
     }
 
-    @Override
-    public void erro() {
-
-    }
 }

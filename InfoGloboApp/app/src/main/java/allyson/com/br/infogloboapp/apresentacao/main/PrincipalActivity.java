@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import allyson.com.br.infogloboapp.InterfacesComuns.OnItemClickListener;
@@ -29,7 +31,6 @@ import allyson.com.br.infogloboapp.apresentacao.LinkExternos.LinksExternosFragme
 import allyson.com.br.infogloboapp.apresentacao.Reportagem.ReportagemFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 public class PrincipalActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnItemClickListener{
 
     @BindView(R.id.toolbar_title)
@@ -53,11 +54,7 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         editoriais = new ArrayList<>();
-
-        String[] arrayEditoriais = getResources().getStringArray(R.array.drawer_list);
-        for (String obj: arrayEditoriais) {
-            editoriais.add(obj);
-        }
+        Collections.addAll(editoriais, getResources().getStringArray(R.array.drawer_list));
 
         if (savedInstanceState == null) {
             getFragmentManagerTransaction(new ConteudoFragment(), "CAPA");
@@ -114,7 +111,6 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         } else if (fragment instanceof LinksExternosFragment) {
             getFragmentManagerTransaction(new ConteudoFragment(), "CAPA");
         }
-
     }
 
     @Override
@@ -125,161 +121,82 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
     @Override
     public void OnClick(int pos, Object object) {
         Conteudo conteudo = new Conteudo();
-        LinksExternosFragment linksExternosFragment = new LinksExternosFragment();
+        final LinksExternosFragment linksExternosFragment = new LinksExternosFragment();
         Bundle bundle = new Bundle();
         Secao secao = new Secao();
         secao.setNome(object.toString());
         conteudo.setSecao(secao);
         Gson gson = new Gson();
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        }
         switch (pos){
             case 0:
                 conteudo.getSecao().setUrl("https://m.oglobo.globo.com/rio/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 1:
                 conteudo.getSecao().setUrl("https://m.oglobo.globo.com/brasil/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 2:
                 conteudo.getSecao().setUrl("https://m.oglobo.globo.com/mundo/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 3:
                 conteudo.getSecao().setUrl("https://m.oglobo.globo.com/economia/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 4:
                 conteudo.getSecao().setUrl("https://m.oglobo.globo.com/sociedade/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 5:
                 conteudo.getSecao().setUrl("http://oglobo.globo.com/sociedade/tecnologia/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 6:
                 conteudo.getSecao().setUrl("http://oglobo.globo.com/sociedade/ciencia/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 7:
                 conteudo.getSecao().setUrl("http://oglobo.globo.com/sociedade/saude/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 8:
                 conteudo.getSecao().setUrl("https://m.oglobo.globo.com/ela/");
-                bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 9:
                 conteudo.getSecao().setUrl("https://m.oglobo.globo.com/cultura/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 10:
                 conteudo.getSecao().setUrl("http://oglobo.globo.com/cultura/revista-da-tv/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 11:
                 conteudo.getSecao().setUrl("http://rioshow.oglobo.globo.com/aspx/geral/home_principal.aspx");
-                bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 12:
                 conteudo.getSecao().setUrl("http://oglobo.globo.com/esportes/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
-
             case 13:
                 conteudo.getSecao().setUrl("http://oglobo.globo.com/fotogalerias/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
 
             case 14:
                 conteudo.getSecao().setUrl("http://oglobo.globo.com/videos/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
             case 15:
                 conteudo.getSecao().setUrl("http://oglobo.globo.com/horoscopo/");
                 bundle.putString("reportagem", gson.toJson(conteudo));
-                linksExternosFragment.setArguments(bundle);
-                getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
                 break;
 
-
         }
+        linksExternosFragment.setArguments(bundle);
+        getFragmentManagerTransaction(linksExternosFragment, "REPORTAGEM");
     }
 }

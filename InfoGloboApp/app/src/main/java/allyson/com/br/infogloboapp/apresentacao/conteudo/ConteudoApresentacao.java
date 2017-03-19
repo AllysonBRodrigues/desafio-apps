@@ -2,7 +2,6 @@ package allyson.com.br.infogloboapp.apresentacao.conteudo;
 
 import java.util.List;
 
-import allyson.com.br.infogloboapp.data.api.Manager;
 import allyson.com.br.infogloboapp.data.api.Repository;
 import allyson.com.br.infogloboapp.model.ConteudoResponse;
 import retrofit2.Call;
@@ -14,13 +13,13 @@ import retrofit2.Response;
  */
 
 public class ConteudoApresentacao implements ConteudoContrato.Apresentacao {
-    private ConteudoContrato.View view;
-    private Repository manager;
+    ConteudoContrato.View view;
+    Repository manager;
 
     @Override
-    public void bind(ConteudoContrato.View view) {
+    public void bind(ConteudoContrato.View view, Repository manager) {
         this.view = view;
-        manager = new Manager();
+        this.manager = manager;
     }
 
     @Override

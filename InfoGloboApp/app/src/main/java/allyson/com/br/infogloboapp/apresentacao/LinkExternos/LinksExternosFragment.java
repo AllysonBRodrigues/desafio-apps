@@ -14,11 +14,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.google.gson.Gson;
-
 import allyson.com.br.infogloboapp.R;
-import allyson.com.br.infogloboapp.model.Conteudo;
 import allyson.com.br.infogloboapp.apresentacao.main.PrincipalActivity;
+import allyson.com.br.infogloboapp.model.Conteudo;
+import allyson.com.br.infogloboapp.util.Desserialize;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -37,6 +36,7 @@ public class LinksExternosFragment extends Fragment {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,17 +46,9 @@ public class LinksExternosFragment extends Fragment {
 
         ButterKnife.bind(this, view);
         Bundle bundle = getArguments();
-        Gson gson = new Gson();
-        Conteudo conteudo = gson.fromJson(bundle.getString("reportagem"), Conteudo.class);
-        PrincipalActivity principal = (PrincipalActivity) getActivity();
-        principal.mudarTitulo(conteudo.getSecao().getNome());
-        principal.configurarNavegacao("link");
-        setWebViewClient(wv_externos);
-        if (conteudo.getUrl() == null) {
-            wv_externos.loadUrl(conteudo.getSecao().getUrl());
-        } else {
-            wv_externos.loadUrl(conteudo.getUrl());
-        }
+
+        atualizarView(Desserialize.desserializeConteudo(bundle.getString("reportagem"), Conteudo.class));
+
         return view;
     }
 
@@ -93,6 +85,18 @@ public class LinksExternosFragment extends Fragment {
 
 
         );
+    }
+
+    public void atualizarView(Conteudo conteudo) {
+        PrincipalActivity principal = (PrincipalActivity) getActivity();
+        principal.mudarTitulo(conteudo.getSecao().getNome());
+        principal.configurarNavegacao("link");
+        setWebViewClient(wv_externos);
+        if (conteudo.getUrl() == null) {
+            wv_externos.loadUrl(conteudo.getSecao().getUrl());
+        } else {
+            wv_externos.loadUrl(conteudo.getUrl());
+        }
     }
 
 }

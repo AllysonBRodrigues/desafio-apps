@@ -12,12 +12,11 @@ public interface ReportagemContrato {
 
     interface Apresentacao {
         void bind(View view);
-        void carregarConteudo(Bundle bundle);
+        void carregarConteudo(String strConteudo);
     }
 
     interface View {
         void atualizarView(Conteudo conteudos);
-        void erro();
     }
 
 

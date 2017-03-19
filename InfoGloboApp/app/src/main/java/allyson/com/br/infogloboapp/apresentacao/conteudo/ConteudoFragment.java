@@ -27,6 +27,7 @@ import allyson.com.br.infogloboapp.R;
 import allyson.com.br.infogloboapp.apresentacao.LinkExternos.LinksExternosFragment;
 import allyson.com.br.infogloboapp.apresentacao.Reportagem.ReportagemFragment;
 import allyson.com.br.infogloboapp.apresentacao.main.PrincipalActivity;
+import allyson.com.br.infogloboapp.data.api.Manager;
 import allyson.com.br.infogloboapp.model.Conteudo;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,9 +65,10 @@ public class ConteudoFragment extends Fragment implements OnItemClickListener, C
         View view = inflater.inflate(R.layout.fragment_capa, container, false);
         ButterKnife.bind(this, view);
         apresentacao = new ConteudoApresentacao();
-        apresentacao.bind(this);
-        checkInstanceState(savedInstanceState);
+        apresentacao.bind(this, new Manager());
         principalActivity = (PrincipalActivity) getActivity();
+        checkInstanceState(savedInstanceState);
+
         return view;
     }
 
@@ -96,14 +98,16 @@ public class ConteudoFragment extends Fragment implements OnItemClickListener, C
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         Gson gson = new Gson();
-        outState.putString("capa", gson.toJson(capa));
-        outState.putString("editorial", gson.toJson(editorial));
+        List<Conteudo> conteudos = new ArrayList<>();
+        conteudos.add(capa);
+        conteudos.addAll(editorial);
+        outState.putString("conteudos", gson.toJson(conteudos));
     }
 
     @Override
     public void atualizarView(List<Conteudo> conteudos) {
         capa = conteudos.get(0);
-        editorial = conteudos.subList(1, conteudos.size() - 1);
+        editorial = conteudos.subList(1, conteudos.size() );
 
         principalActivity.mudarTitulo("O GLOBO");
         principalActivity.configurarNavegacao("capa");
@@ -138,10 +142,11 @@ public class ConteudoFragment extends Fragment implements OnItemClickListener, C
     public void checkInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             Gson gson = new Gson();
-            capa = gson.fromJson(savedInstanceState.getString("capa"), Conteudo.class);
             Type tipoLista = new TypeToken<ArrayList<Conteudo>>() {
             }.getType();
-            editorial = gson.fromJson(savedInstanceState.getString("editorial"), tipoLista);
+            List<Conteudo> conteudos = gson.fromJson(savedInstanceState.getString("conteudos"), tipoLista);
+            atualizarView(conteudos);
+
         } else {
             pb_capa.setVisibility(View.VISIBLE);
             apresentacao.carregarConteudo();

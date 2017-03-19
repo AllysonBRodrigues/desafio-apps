@@ -1,10 +1,7 @@
 package allyson.com.br.infogloboapp.apresentacao.Reportagem;
 
-import android.os.Bundle;
-
-import com.google.gson.Gson;
-
 import allyson.com.br.infogloboapp.model.Conteudo;
+import allyson.com.br.infogloboapp.util.Desserialize;
 
 /**
  * Created by Allyson Rodrigues on 18/03/2017.
@@ -21,9 +18,8 @@ public class ReportagemApresentacao implements ReportagemContrato.Apresentacao {
     }
 
     @Override
-    public void carregarConteudo(Bundle bundle) {
-        Gson gson = new Gson();
-        Conteudo conteudo = gson.fromJson(bundle.getString("reportagem"), Conteudo.class);
+    public void carregarConteudo(String strConteudo) {
+        Conteudo conteudo = Desserialize.desserializeConteudo(strConteudo, Conteudo.class);
         view.atualizarView(conteudo);
     }
 }
