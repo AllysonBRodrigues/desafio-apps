@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -54,8 +55,11 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         editoriais = new ArrayList<>();
-        Collections.addAll(editoriais, getResources().getStringArray(R.array.drawer_list));
-
+        try {
+            Collections.addAll(editoriais, getResources().getStringArray(R.array.drawer_list));
+        }catch (Exception ex){
+            Log.e("Erro", "Erro ao carregar menu");
+        }
         if (savedInstanceState == null) {
             getFragmentManagerTransaction(new ConteudoFragment(), "CAPA");
         }

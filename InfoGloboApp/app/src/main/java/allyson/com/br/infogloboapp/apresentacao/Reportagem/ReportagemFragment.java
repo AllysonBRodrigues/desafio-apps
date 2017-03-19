@@ -136,6 +136,7 @@ public class ReportagemFragment extends Fragment implements ReportagemContrato.V
         try {
             Picasso.with(getActivity())
                     .load(conteudo.getImagens().get(0).getUrl())
+                    .resize(0,250)
                     .placeholder(R.drawable.placeholder)
                     .into(iv_reportagem);
             if (conteudo.getImagens().get(0).getLegenda() == null ||

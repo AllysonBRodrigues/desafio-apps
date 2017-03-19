@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -139,11 +140,15 @@ public class ConteudoFragment extends Fragment implements OnItemClickListener, C
 
             principalActivity.mudarTitulo("O GLOBO");
             principalActivity.configurarNavegacao("capa");
-            Picasso.with(getActivity())
-                    .load(conteudos.get(0).getImagens().get(0).getUrl())
-                    .placeholder(R.drawable.placeholder)
-                    .into(iv_capa);
-
+            try {
+                Picasso.with(getActivity())
+                        .load(conteudos.get(0).getImagens().get(0).getUrl())
+                        .resize(0,200)
+                        .placeholder(R.drawable.placeholder)
+                        .into(iv_capa);
+            }catch (Exception e){
+                Log.e("Erro", e.getMessage());
+            }
             iv_capa.setVisibility(View.VISIBLE);
             tv_titulo.setText(capa.getTitulo());
             tv_secao_nome.setText(capa.getSecao().getNome());
@@ -164,6 +169,7 @@ public class ConteudoFragment extends Fragment implements OnItemClickListener, C
             editorialAdapter.notifyDataSetChanged();
             scrollView.fullScroll(View.FOCUS_UP);
         } catch (Exception e) {
+             e.printStackTrace();
             apresentacao.carregarConteudo();
         }
     }

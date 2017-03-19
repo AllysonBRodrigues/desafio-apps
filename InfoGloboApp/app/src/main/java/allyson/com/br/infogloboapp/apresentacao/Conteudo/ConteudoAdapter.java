@@ -49,6 +49,7 @@ class ConteudoAdapter extends RecyclerView.Adapter<ConteudoAdapter.ViewHolder> {
         try {
             Picasso.with(context)
                     .load(conteudo.getImagens().get(0).getUrl())
+                    .resize(100,75)
                     .placeholder(R.drawable.placeholder)
                     .into(holder.iv_editorial);
         } catch (Exception ex) {
