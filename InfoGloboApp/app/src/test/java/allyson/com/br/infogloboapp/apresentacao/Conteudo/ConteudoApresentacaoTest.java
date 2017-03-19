@@ -1,4 +1,4 @@
-package allyson.com.br.infogloboapp.apresentacao.conteudo;
+package allyson.com.br.infogloboapp.apresentacao.Conteudo;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

@@ -1,7 +1,8 @@
 package allyson.com.br.infogloboapp.data.service;
 
-/**
- * Created by allys on 14/03/2017.
+ /**
+ * Created by Allyson Rodrigues on 14/03/2017.
+ * Interface de medotos do retrofit
  */
 
 import java.util.List;

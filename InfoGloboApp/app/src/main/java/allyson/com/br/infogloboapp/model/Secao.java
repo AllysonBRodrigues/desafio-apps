@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 /**
- * Created by allys on 14/03/2017.
+ * Created by Allyson Rodrigues on 14/03/2017.
+ * Objeto secao
  */
 
 public class Secao implements Serializable {

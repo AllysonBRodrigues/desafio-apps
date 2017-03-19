@@ -1,5 +1,6 @@
-package allyson.com.br.infogloboapp.apresentacao.main;
+package allyson.com.br.infogloboapp.apresentacao.Principal;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -7,11 +8,9 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -24,20 +23,20 @@ import java.util.List;
 
 import allyson.com.br.infogloboapp.InterfacesComuns.OnItemClickListener;
 import allyson.com.br.infogloboapp.R;
-import allyson.com.br.infogloboapp.apresentacao.conteudo.ConteudoFragment;
-import allyson.com.br.infogloboapp.model.Conteudo;
-import allyson.com.br.infogloboapp.model.Secao;
+import allyson.com.br.infogloboapp.apresentacao.Conteudo.ConteudoFragment;
 import allyson.com.br.infogloboapp.apresentacao.LinkExternos.LinksExternosFragment;
 import allyson.com.br.infogloboapp.apresentacao.Reportagem.ReportagemFragment;
+import allyson.com.br.infogloboapp.model.Conteudo;
+import allyson.com.br.infogloboapp.model.Secao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-public class PrincipalActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnItemClickListener{
+
+public class PrincipalActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnItemClickListener {
 
     @BindView(R.id.toolbar_title)
     TextView toolbar_title;
     private Toolbar toolbar;
     NavigationView navigationView;
-    private DrawerAdapter drawerAdapter;
     @BindView(R.id.rv_drawer)
     RecyclerView rv_drawer;
     private List<String> editoriais;
@@ -52,7 +51,8 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         ButterKnife.bind(this);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
         editoriais = new ArrayList<>();
         Collections.addAll(editoriais, getResources().getStringArray(R.array.drawer_list));
 
@@ -61,17 +61,33 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         }
     }
 
+    /**
+     * Método para transição de fragment.
+     *
+     * @param fragment        Fragment que sera exibido
+     * @param fragmentDestiny tag de marcação da fragment que sera exibida
+     */
     public void getFragmentManagerTransaction(Fragment fragment, String fragmentDestiny) {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_conteudo, fragment, fragmentDestiny).addToBackStack("pilha").commitAllowingStateLoss();
     }
 
+    /**
+     * Método para mudar o título da barra de acordo com o editorial que a notícia pertence
+     *
+     * @param titulo Nome do editorial que será exibido na barra
+     */
     public void mudarTitulo(String titulo) {
         toolbar_title.setText(titulo);
     }
 
-    public void configurarNavegacao(String tela){
+    /**
+     * Configuração da barra de navegação para exibir os itens adequados para cada tela
+     *
+     * @param tela tela que terá a barra configurada
+     */
+    public void configurarNavegacao(String tela) {
 
-        if(tela.equalsIgnoreCase("link") || tela.equalsIgnoreCase("reportagem")) {
+        if (tela.equalsIgnoreCase("link") || tela.equalsIgnoreCase("reportagem")) {
             toolbar.setNavigationIcon(R.drawable.voltar);
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,10 +95,9 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
                     onBackPressed();
                 }
             });
-        }else{
-
+        } else {
             rv_drawer.setLayoutManager(new LinearLayoutManager(this));
-            drawerAdapter = new DrawerAdapter(this, editoriais,onItemClickListener);
+            DrawerAdapter drawerAdapter = new DrawerAdapter(this, editoriais, onItemClickListener);
             rv_drawer.setAdapter(drawerAdapter);
             drawerAdapter.notifyDataSetChanged();
 
@@ -104,7 +119,7 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else if (fragment instanceof ConteudoFragment) {
+        } else if (fragment instanceof ConteudoFragment) {
             finish();
         } else if (fragment instanceof ReportagemFragment) {
             getFragmentManagerTransaction(new ConteudoFragment(), "CAPA");
@@ -118,6 +133,13 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         return false;
     }
 
+    /**
+     * Clique no editorial que deseja visualizar. Direciona para a tela de links externos e carrega
+     * a url em uma webview
+     *
+     * @param pos    posição na lista que se encontra o editorial selecionado
+     * @param object editorial que foi selecionado
+     */
     @Override
     public void OnClick(int pos, Object object) {
         Conteudo conteudo = new Conteudo();
@@ -130,7 +152,7 @@ public class PrincipalActivity extends AppCompatActivity implements NavigationVi
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }
-        switch (pos){
+        switch (pos) {
             case 0:
                 conteudo.getSecao().setUrl("https://m.oglobo.globo.com/rio/");
                 bundle.putString("reportagem", gson.toJson(conteudo));

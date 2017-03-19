@@ -1,4 +1,4 @@
-package allyson.com.br.infogloboapp.apresentacao.conteudo;
+package allyson.com.br.infogloboapp.apresentacao.Conteudo;
 
 import java.util.List;
 
@@ -9,10 +9,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by allys on 18/03/2017.
+ * Created by Allyson Rodrigues on 18/03/2017.
+ * Implementação da camada de apresentação
  */
 
-public class ConteudoApresentacao implements ConteudoContrato.Apresentacao {
+class ConteudoApresentacao implements ConteudoContrato.Apresentacao {
     ConteudoContrato.View view;
     Repository manager;
 

@@ -1,4 +1,4 @@
-package allyson.com.br.infogloboapp.apresentacao.conteudo;
+package allyson.com.br.infogloboapp.apresentacao.Conteudo;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
@@ -19,14 +19,16 @@ import allyson.com.br.infogloboapp.model.Conteudo;
 
 /**
  * Created by Allyson Rodrigues 15/03/2017.
+ * Adapter para exibição do conteudo.
  */
 
-public class ConteudoAdapter extends RecyclerView.Adapter<ConteudoAdapter.ViewHolder> {
+class ConteudoAdapter extends RecyclerView.Adapter<ConteudoAdapter.ViewHolder> {
 
     private Context context;
     private List<Conteudo> conteudos;
     private OnItemClickListener onItemClickListener;
-    public ConteudoAdapter(Context context, List<Conteudo> conteudos, OnItemClickListener onItemClickListener){
+
+    ConteudoAdapter(Context context, List<Conteudo> conteudos, OnItemClickListener onItemClickListener) {
         this.context = context;
         this.conteudos = conteudos;
         this.onItemClickListener = onItemClickListener;
@@ -49,11 +51,12 @@ public class ConteudoAdapter extends RecyclerView.Adapter<ConteudoAdapter.ViewHo
                     .load(conteudo.getImagens().get(0).getUrl())
                     .placeholder(R.drawable.placeholder)
                     .into(holder.iv_editorial);
-        }catch (Exception ex){
-            Log.e("ERRO","Imagem não disponível");
+        } catch (Exception ex) {
+            Log.e("ERRO", "Imagem não disponível");
             holder.iv_editorial.setVisibility(View.GONE);
         }
     }
+
     @Override
     public int getItemCount() {
         return conteudos.size();
@@ -64,6 +67,7 @@ public class ConteudoAdapter extends RecyclerView.Adapter<ConteudoAdapter.ViewHo
         private AppCompatTextView tv_editorial;
         private AppCompatTextView tv_titulo_editorial;
         private AppCompatImageView iv_editorial;
+
         ViewHolder(View v) {
             super(v);
             tv_editorial = (AppCompatTextView) v.findViewById(R.id.tv_editorial);
@@ -74,8 +78,8 @@ public class ConteudoAdapter extends RecyclerView.Adapter<ConteudoAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
-            if(!conteudos.isEmpty()){
-                onItemClickListener.OnClick(getAdapterPosition(),conteudos.get(getAdapterPosition()));
+            if (!conteudos.isEmpty()) {
+                onItemClickListener.OnClick(getAdapterPosition(), conteudos.get(getAdapterPosition()));
             }
         }
     }

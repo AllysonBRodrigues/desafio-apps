@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * Created by Allyson Rodrigues on 14/03/2017.
+ * Objeto Imagem
  */
 
 public class Imagens implements Serializable {

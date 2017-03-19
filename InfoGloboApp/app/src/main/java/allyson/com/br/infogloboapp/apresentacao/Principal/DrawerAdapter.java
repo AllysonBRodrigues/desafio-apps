@@ -1,4 +1,4 @@
-package allyson.com.br.infogloboapp.apresentacao.main;
+package allyson.com.br.infogloboapp.apresentacao.Principal;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;
@@ -13,17 +13,18 @@ import allyson.com.br.infogloboapp.InterfacesComuns.OnItemClickListener;
 import allyson.com.br.infogloboapp.R;
 
 /**
- * Created by allys on 18/03/2017.
+ * Created by Allyson Rodrigues on 18/03/2017.
+ * Adapter que compõem o menu da tela principal
  */
 
-public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.ViewHolder> {
+class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder> {
 
     private Context context;
     private List<String> editoriais;
     private OnItemClickListener onItemClickListener;
 
 
-    public DrawerAdapter(Context context, List<String> editoriais, OnItemClickListener onItemClickListener){
+    DrawerAdapter(Context context, List<String> editoriais, OnItemClickListener onItemClickListener) {
         this.context = context;
         this.editoriais = editoriais;
         this.onItemClickListener = onItemClickListener;
@@ -40,6 +41,9 @@ public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.ViewHolde
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tv_editorial.setText(editoriais.get(position));
+        if (position == 3 || position == 7 || position == 11 || position == 12) {
+            holder.view.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -50,16 +54,19 @@ public class DrawerAdapter  extends RecyclerView.Adapter<DrawerAdapter.ViewHolde
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private AppCompatTextView tv_editorial;
+        private View view;
+
         ViewHolder(View v) {
             super(v);
             tv_editorial = (AppCompatTextView) v.findViewById(R.id.tv_editorial);
+            view = v.findViewById(R.id.view);
             v.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            if(!editoriais.isEmpty()){
-                onItemClickListener.OnClick(getAdapterPosition(),editoriais.get(getAdapterPosition()));
+            if (!editoriais.isEmpty()) {
+                onItemClickListener.OnClick(getAdapterPosition(), editoriais.get(getAdapterPosition()));
             }
         }
     }

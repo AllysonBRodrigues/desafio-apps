@@ -14,22 +14,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+
 import com.bluejamesbond.text.DocumentView;
 import com.squareup.picasso.Picasso;
 
 import org.joda.time.DateTime;
 
 import allyson.com.br.infogloboapp.R;
-
+import allyson.com.br.infogloboapp.apresentacao.Principal.PrincipalActivity;
 import allyson.com.br.infogloboapp.model.Conteudo;
-import allyson.com.br.infogloboapp.apresentacao.main.PrincipalActivity;
+import allyson.com.br.infogloboapp.util.Datas;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
+ * Implementação do fragment da fragmente onde é exibida a reportagem
  */
-public class ReportagemFragment extends Fragment implements ReportagemContrato.View{
+public class ReportagemFragment extends Fragment implements ReportagemContrato.View {
 
     @BindView(R.id.tv_titulo)
     AppCompatTextView tv_titulo;
@@ -50,8 +52,6 @@ public class ReportagemFragment extends Fragment implements ReportagemContrato.V
     @BindView(R.id.scrollView)
     ScrollView scrollView;
 
-    private ReportagemContrato.Apresentacao apresentacao;
-
     public ReportagemFragment() {
         // Required empty public constructor
     }
@@ -65,7 +65,7 @@ public class ReportagemFragment extends Fragment implements ReportagemContrato.V
         View view = inflater.inflate(R.layout.fragment_reportagem, container, false);
         ButterKnife.bind(this, view);
 
-        apresentacao = new ReportagemApresentacao();
+        ReportagemContrato.Apresentacao apresentacao = new ReportagemApresentacao();
         apresentacao.bind(this);
         Bundle bundle = getArguments();
         apresentacao.carregarConteudo(bundle.getString("reportagem"));
@@ -78,6 +78,12 @@ public class ReportagemFragment extends Fragment implements ReportagemContrato.V
         inflater.inflate(R.menu.menu, menu);
     }
 
+    /**
+     * Ao clicar no menu bt_topo a pagina é levada ao topo
+     *
+     * @param item item do menu clicado
+     * @return retorna true para que o menu seja exibido
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -89,13 +95,12 @@ public class ReportagemFragment extends Fragment implements ReportagemContrato.V
         }
     }
 
-    private String formatarData(DateTime data) {
-        String dia = Integer.parseInt(data.dayOfMonth().getAsString()) < 10 ? "0" + data.dayOfMonth().getAsString() : data.dayOfMonth().getAsString();
-        String mes = Integer.parseInt(data.monthOfYear().getAsString()) < 10 ? "0" + data.monthOfYear().getAsString() : data.monthOfYear().getAsString();
-        String hora = Integer.parseInt(String.valueOf(data.getHourOfDay())) < 10 ? "0" + String.valueOf(data.getHourOfDay()) : String.valueOf(data.getHourOfDay());
-        String minuto = Integer.parseInt(String.valueOf(data.getMinuteOfHour())) < 10 ? "0" + String.valueOf(data.getMinuteOfHour()) : String.valueOf(data.getMinuteOfHour());
-        return dia + "/" + mes + "/" + data.year().getAsString() + " " + hora + ":" + minuto;
-    }
+    /**
+     * Recebe uma lista de conteudos da camada de apresentação e
+     * exibe as informaçãos para o usuario.
+     *
+     * @param conteudo conteudo recebido da camada de apresentação
+     */
 
     @Override
     public void atualizarView(Conteudo conteudo) {
@@ -123,9 +128,9 @@ public class ReportagemFragment extends Fragment implements ReportagemContrato.V
         DateTime publicadoEm = new DateTime(conteudo.getPublicadoEm());
 
         if (publicadoEm.compareTo(atualizadoEm) == 0) {
-            tv_publicado_em.setText(formatarData(publicadoEm));
+            tv_publicado_em.setText(Datas.formatarData(publicadoEm));
         } else {
-            tv_publicado_em.setText(formatarData(atualizadoEm));
+            tv_publicado_em.setText(Datas.formatarData(atualizadoEm));
         }
 
         try {
@@ -137,7 +142,7 @@ public class ReportagemFragment extends Fragment implements ReportagemContrato.V
                     conteudo.getImagens().get(0).getLegenda().equalsIgnoreCase("")) {
                 tv_legenda_foto.setVisibility(View.GONE);
             } else {
-                tv_legenda_foto.setText(conteudo.getImagens().get(0).getLegenda() + ". Foto: " +
+                tv_legenda_foto.setText(conteudo.getImagens().get(0).getLegenda() + " " +
                         conteudo.getImagens().get(0).getFonte());
             }
         } catch (Exception ex) {

@@ -7,6 +7,7 @@ import retrofit2.Callback;
 
 /**
  * Created by allys on 18/03/2017.
+ * Interface de request ao webservice
  */
 
 public interface Repository {

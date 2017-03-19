@@ -15,7 +15,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import allyson.com.br.infogloboapp.R;
-import allyson.com.br.infogloboapp.apresentacao.main.PrincipalActivity;
+import allyson.com.br.infogloboapp.apresentacao.Principal.PrincipalActivity;
 import allyson.com.br.infogloboapp.model.Conteudo;
 import allyson.com.br.infogloboapp.util.Desserialize;
 import butterknife.BindView;
@@ -57,6 +57,13 @@ public class LinksExternosFragment extends Fragment {
         inflater.inflate(R.menu.menu, menu);
     }
 
+
+    /**
+     * Ao clicar no menu bt_topo a pagina é levada ao topo
+     *
+     * @param item item do menu clicado
+     * @return retorna true para que o menu seja exibido
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -68,6 +75,11 @@ public class LinksExternosFragment extends Fragment {
         }
     }
 
+    /**
+     * É exibido um progresse bar enquanto a pagina é carregada
+     *
+     * @param webview webview que a pagina será exibida
+     */
     private void setWebViewClient(WebView webview) {
         webview.setWebViewClient(new WebViewClient() {
                                      @Override
@@ -82,10 +94,14 @@ public class LinksExternosFragment extends Fragment {
 
                                      }
                                  }
-
-
         );
     }
+
+    /**
+     * Exibe no webview a url de um link externo existente no conteudo
+     *
+     * @param conteudo conteudo da reportagem
+     */
 
     public void atualizarView(Conteudo conteudo) {
         PrincipalActivity principal = (PrincipalActivity) getActivity();

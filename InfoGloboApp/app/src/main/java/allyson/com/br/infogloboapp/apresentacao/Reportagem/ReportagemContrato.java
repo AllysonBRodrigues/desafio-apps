@@ -1,17 +1,17 @@
 package allyson.com.br.infogloboapp.apresentacao.Reportagem;
 
-import android.os.Bundle;
-
 import allyson.com.br.infogloboapp.model.Conteudo;
 
 /**
- * Created by allys on 18/03/2017.
+ * Created by Allyson Rodrigues on 18/03/2017.
+ * Interfaces de comunicaçao entre a camada de apresentação e a camada de view
  */
 
-public interface ReportagemContrato {
+interface ReportagemContrato {
 
     interface Apresentacao {
         void bind(View view);
+
         void carregarConteudo(String strConteudo);
     }
 

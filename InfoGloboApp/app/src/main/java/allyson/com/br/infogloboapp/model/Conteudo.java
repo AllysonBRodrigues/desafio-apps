@@ -1,18 +1,15 @@
 package allyson.com.br.infogloboapp.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by allys on 14/03/2017.
+ * Created by Allyson Rodrigues on 14/03/2017.
+ * Objeto Conteudo
  */
-
-import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 public class Conteudo {
 

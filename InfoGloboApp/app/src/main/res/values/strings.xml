@@ -7,6 +7,9 @@
     <string name="navigation_drawer_open">Abrir navigation drawer</string>
     <string name="navigation_drawer_close">Fechar navigation drawer</string>
     <string name="editorias">Editorias</string>
+    <string name="por">Por</string>
+    <string name="imagem_reportagem">Imagem reportagem</string>
+    <string name="o_globo">O GLOBO</string>
 
     <string-array name="drawer_list">
         <item>RIO</item>
